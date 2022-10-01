@@ -11,9 +11,9 @@ public class CharacterController : MonoBehaviour
     public float jumpForce;
     public float coyoteTime;
     private float offGroundTimer = 0f;
-//    public float jumpBufferTime;
-//    private bool jumpBuffered;
-//    private float jumpBufferedTimer = 0f;
+    public float jumpBufferTime;
+    private float jumpBufferTimer = 0f;
+    private bool jumpBuffered;
 
     private bool grounded;
 
@@ -33,9 +33,23 @@ public class CharacterController : MonoBehaviour
             offGroundTimer += Time.deltaTime;
         }
 
-        rb.velocity = Vector2.right * horizontalInput * speed + Vector2.up * rb.velocity.y;
-        if (Input.GetButtonDown("Jump") && offGroundTimer < coyoteTime)
+        if (jumpBuffered)
         {
+            jumpBufferTimer += Time.deltaTime;
+            if (jumpBufferTimer > jumpBufferTime)
+            {
+                jumpBuffered = false;
+                jumpBufferTimer = 0f;
+            }
+        }
+
+        rb.velocity = Vector2.right * horizontalInput * speed + Vector2.up * rb.velocity.y;
+        if (Input.GetButtonDown("Jump"))
+            jumpBuffered = true;
+        if (jumpBuffered && offGroundTimer < coyoteTime)
+        {
+            jumpBuffered = false;
+            jumpBufferTimer = 0f;
             Jump();
         }
     }
@@ -54,10 +68,10 @@ public class CharacterController : MonoBehaviour
         }
     }
 
-    void OnCollisionStay2D(Collision2D col)
-    {
+    // void OnCollisionStay2D(Collision2D col)
+    // {
 
-    }
+    // }
 
     void OnCollisionExit2D(Collision2D col)
     {
