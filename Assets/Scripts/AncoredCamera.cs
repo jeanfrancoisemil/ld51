@@ -18,14 +18,14 @@ public class AncoredCamera : MonoBehaviour
     void Update()
     {
         // Calculer la distance de toute les ancres pour trouver la plus proche
-        float minDistance = 999;
+        float minDistance = 9999;
         Anchor nearestAnchor = null;
 
         //Debug.LogFormat("{0}", Anchor.AnchorList.Count);
 
         foreach (Anchor anchor in Anchor.AnchorList)
         {
-            float distance = Vector3.Distance(anchor.transform.position, this.transform.position);
+            float distance = DistanceXY(anchor.transform.position, this.transform.position);
             if (distance < minDistance)
             {
                 minDistance = distance;
@@ -47,5 +47,11 @@ public class AncoredCamera : MonoBehaviour
         Vector3 newPosition = Vector3.Lerp(origin, target, smoothness);
         newPosition.z = -10;
         transform.position = newPosition;
+
+        GetComponent<Camera>().orthographicSize = Mathf.Lerp(GetComponent<Camera>().orthographicSize, currentAnchor.cameraSize, smoothness);
+    }
+
+    private static float DistanceXY(Vector3 a, Vector3 b) {
+        return (b.x - a.x) * (b.x - a.x) + (b.y - a.y) * (b.y - a.y);
     }
 }
