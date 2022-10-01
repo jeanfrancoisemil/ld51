@@ -45,6 +45,7 @@ public class Mob : MonoBehaviour
         if (targetPriority > 0 && priority < targetPriority)
             return;
         target = source;
+        targetPriority = priority;
     }
 
     public void OnSoundEnded()

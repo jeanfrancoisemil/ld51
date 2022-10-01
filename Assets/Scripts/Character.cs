@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class Character : MonoBehaviour
 {
+    public GameObject clock;
 
     private Timer timer;
 
@@ -22,5 +23,7 @@ public class Character : MonoBehaviour
     public void Die()
     {
         timer.time = 0;
+        GameObject obj = Instantiate(clock);
+        obj.transform.position = transform.position;
     }
 }

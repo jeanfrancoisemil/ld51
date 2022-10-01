@@ -41,6 +41,11 @@ public class Timer : MonoBehaviour
         }
         else
         {
+            AlarmClock[] clocks = FindObjectsOfType<AlarmClock>();
+            foreach (AlarmClock clock in clocks)
+                Destroy(clock.gameObject);
+            Player.GetComponent<Character>().Die();
+
             Player.transform.position = lastCheckPoint;
             time = 10;
         }
@@ -55,5 +60,4 @@ public class Timer : MonoBehaviour
         float seconds = Mathf.FloorToInt(timeToDisplay % 60);
         timeText.text = string.Format("{0:00}:{1:00}", minutes, seconds);
     }
-
 }
