@@ -5,6 +5,9 @@ TagManager:
   serializedVersion: 2
   tags:
   - Ground
+  - BackGround
+  - Props
+  - Timer
   layers:
   - Default
   - TransparentFX
