@@ -6,6 +6,7 @@ public class Door : MonoBehaviour
 {
     public Button[] buttons;
     public bool stayOpen = true;
+    public bool needAllButtons = true;
 
     [HideInInspector]
     public bool isOpen = false;
@@ -39,13 +40,32 @@ public class Door : MonoBehaviour
 
     private bool IsDoorOpen()
     {
-        foreach (Button button in buttons)
+        if (needAllButtons)
         {
-            if (!button.isPressed)
+            foreach (Button button in buttons)
             {
-                return false;
+                if (button.isPressed)
+                {
+                    return true;
+                }
             }
+            return false;
         }
-        return true;
+        else
+        {
+            var button_count = 0;
+
+            foreach (Button button in buttons)
+            {
+                if (!button.isPressed)
+                {
+                    return false;
+                } else
+                {
+                    button_count++;
+                }
+            }
+            return button_count == buttons.Length;
+        }
     }
 }
