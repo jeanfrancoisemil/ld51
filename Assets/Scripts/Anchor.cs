@@ -17,4 +17,18 @@ public class Anchor : MonoBehaviour
     void Update()
     {
     }
+
+    private void OnDrawGizmosSelected()
+    {
+        Vector3 top0 = transform.position + new Vector3(-(cameraSize) * (16 / 9) * 1.7f, cameraSize / (16/9), 0);
+        Vector3 top1 = transform.position + new Vector3((cameraSize) * (16 / 9) * 1.7f, cameraSize / (16 / 9), 0);
+
+        Vector3 bottom0 = transform.position + new Vector3(-(cameraSize) * (16 / 9) * 1.7f, -cameraSize / (16 / 9), 0);
+        Vector3 bottom1 = transform.position + new Vector3((cameraSize) * (16 / 9) * 1.7f, -cameraSize / (16 / 9), 0);
+
+        Gizmos.DrawLine(top0, top1);
+        Gizmos.DrawLine(bottom0, bottom1);
+        Gizmos.DrawLine(top0, bottom0);
+        Gizmos.DrawLine(top1, bottom1);
+    }
 }
