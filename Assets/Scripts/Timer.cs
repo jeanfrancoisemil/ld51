@@ -10,9 +10,10 @@ public class Timer : MonoBehaviour
     private static Timer instance;
     public Vector2 lastCheckPoint;
     public GameObject Player;
-    public float time = 10;
+    public float time = 11;
     private float seconds;
     public TextMeshProUGUI timeText;
+    public Rigidbody2D rb;
 
     private void Awake()
     {
@@ -30,16 +31,25 @@ public class Timer : MonoBehaviour
     private void Start()
     {
         Player.transform.position = lastCheckPoint;
+        rb = Player.GetComponent<Rigidbody2D>();
     }
 
     void Update()
     {
+
         if (time > 0)
         {
-            time -= Time.deltaTime;
-            DisplayTime(time);
+            if (rb.velocity.x == 0 && time > 10.99)
+            {
+                time = 11;
+            }
+            else
+            {
+                time -= Time.deltaTime;
+                DisplayTime(time);
+            }
         }
-        else
+        else if (time <= 0)
         {
             AlarmClock[] clocks = FindObjectsOfType<AlarmClock>();
             foreach (AlarmClock clock in clocks)
@@ -47,7 +57,7 @@ public class Timer : MonoBehaviour
             Player.GetComponent<Character>().Die();
 
             Player.transform.position = lastCheckPoint;
-            time = 10;
+            time = 11;
         }
 
         seconds = Mathf.FloorToInt(time % 60);
