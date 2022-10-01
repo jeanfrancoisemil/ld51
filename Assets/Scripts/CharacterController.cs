@@ -18,7 +18,7 @@ public class CharacterController : MonoBehaviour
     private bool grounded;
 
     // Start is called before the first frame update
-    void Start()
+    void Awake()
     {
         rb = gameObject.GetComponent<Rigidbody2D>();
     }
