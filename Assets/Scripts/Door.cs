@@ -5,7 +5,7 @@ using UnityEngine;
 public class Door : MonoBehaviour
 {
     public Button[] buttons;
-    public bool stayOpen = true;
+    public bool stayOpen = false;
     public bool needAllButtons = true;
 
     [HideInInspector]
