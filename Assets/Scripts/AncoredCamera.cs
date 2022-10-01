@@ -8,6 +8,7 @@ public class AncoredCamera : MonoBehaviour
     // Options
     [Range(0.0001f, 1f)]
     public float smoothness = 0.01f;
+    public Transform player;
 
     private Anchor currentAnchor = null;
 
@@ -25,7 +26,7 @@ public class AncoredCamera : MonoBehaviour
 
         foreach (Anchor anchor in Anchor.AnchorList)
         {
-            float distance = DistanceXY(anchor.transform.position, this.transform.position);
+            float distance = DistanceXY(anchor.transform.position, player.transform.position);
             if (distance < minDistance)
             {
                 minDistance = distance;
