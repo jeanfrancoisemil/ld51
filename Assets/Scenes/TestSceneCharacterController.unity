@@ -342,7 +342,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5373e5079008089498526a2bf80af947, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  smoothness: 0.21
+  smoothness: 0.2
   player: {fileID: 1051305277}
 --- !u!4 &1051305277 stripped
 Transform:
@@ -1727,7 +1727,7 @@ PrefabInstance:
       objectReference: {fileID: 6200000, guid: 4287bd5a3a8eab74088a7a1a977d5efe, type: 2}
     - target: {fileID: 1221933864125444229, guid: 286279dae1e7b9a4493c139d6afbf2db, type: 3}
       propertyPath: jumpCancelGravity
-      value: 42
+      value: 20
       objectReference: {fileID: 0}
     - target: {fileID: 1221933864125444231, guid: 286279dae1e7b9a4493c139d6afbf2db, type: 3}
       propertyPath: m_Name

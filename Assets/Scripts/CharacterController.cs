@@ -75,8 +75,12 @@ public class CharacterController : MonoBehaviour
     {
         if (col.collider.tag == groundTag)
         {
-            //Debug.Log(col.GetContact(0));
-            if (Vector2.Dot(col.GetContact(0).normal, Vector2.up) >= 0.5)
+            bool floor = false;
+            for (int i = 0; i<col.contactCount; i++)
+            {
+                floor = floor || (Vector2.Dot(col.GetContact(i).normal, Vector2.up) >= 0.5);
+            }
+            if (floor)
             {
                 grounded = true;
                 offGroundTimer = 0f;
@@ -88,8 +92,12 @@ public class CharacterController : MonoBehaviour
     {
         if (col.collider.tag == groundTag)
         {
-            //Debug.Log(col.GetContact(0));
-            if (Vector2.Dot(col.GetContact(0).normal, Vector2.up) >= 0.5)
+            bool floor = false;
+            for (int i = 0; i<col.contactCount; i++)
+            {
+                floor = floor || (Vector2.Dot(col.GetContact(i).normal, Vector2.up) >= 0.5);
+            }
+            if (floor)
             {
                 grounded = true;
                 offGroundTimer = 0f;
