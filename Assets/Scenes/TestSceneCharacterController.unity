@@ -1721,17 +1721,13 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 1221933864125444228, guid: 286279dae1e7b9a4493c139d6afbf2db, type: 3}
-      propertyPath: m_Material
-      value: 
-      objectReference: {fileID: 6200000, guid: 4287bd5a3a8eab74088a7a1a977d5efe, type: 2}
-    - target: {fileID: 1221933864125444229, guid: 286279dae1e7b9a4493c139d6afbf2db, type: 3}
-      propertyPath: jumpCancelGravity
-      value: 20
-      objectReference: {fileID: 0}
     - target: {fileID: 1221933864125444231, guid: 286279dae1e7b9a4493c139d6afbf2db, type: 3}
       propertyPath: m_Name
       value: Player
+      objectReference: {fileID: 0}
+    - target: {fileID: 7838334337634746923, guid: 286279dae1e7b9a4493c139d6afbf2db, type: 3}
+      propertyPath: m_Enabled
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 286279dae1e7b9a4493c139d6afbf2db, type: 3}

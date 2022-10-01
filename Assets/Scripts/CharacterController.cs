@@ -5,6 +5,7 @@ using UnityEngine;
 public class CharacterController : MonoBehaviour
 {
     private Rigidbody2D rb;
+    private SpriteRenderer sr;
     public string groundTag;
 
     public float speed;
@@ -22,12 +23,17 @@ public class CharacterController : MonoBehaviour
     void Awake()
     {
         rb = gameObject.GetComponent<Rigidbody2D>();
+        sr = transform.Find("GFX").GetComponent<SpriteRenderer>();
     }
 
     // Update is called once per frame
     void Update()
     {
         float horizontalInput = Input.GetAxisRaw("Horizontal");
+        if (horizontalInput != 0)
+        {
+            sr.flipX = horizontalInput < 0;
+        }
 
         if (!grounded)
         {
