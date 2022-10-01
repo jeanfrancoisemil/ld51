@@ -8,6 +8,7 @@ TagManager:
   - BackGround
   - Props
   - Timer
+  - PlayerKiller
   layers:
   - Default
   - TransparentFX
