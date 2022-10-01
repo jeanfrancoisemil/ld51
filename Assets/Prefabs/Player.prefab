@@ -103,6 +103,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 718fa6da526933d4fbfa0851080e468c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  clock: {fileID: 3665909100955390798, guid: 1951e45ea1aee8f4ca405ef37afc178b, type: 3}
 --- !u!1 &1221933864832749463
 GameObject:
   m_ObjectHideFlags: 0
