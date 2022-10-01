@@ -1562,7 +1562,7 @@ TilemapCollider2D:
   m_GameObject: {fileID: 1837216014}
   m_Enabled: 1
   m_Density: 1
-  m_Material: {fileID: 0}
+  m_Material: {fileID: 6200000, guid: 4287bd5a3a8eab74088a7a1a977d5efe, type: 2}
   m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 1
@@ -1720,6 +1720,14 @@ PrefabInstance:
     - target: {fileID: 1221933864125444227, guid: 286279dae1e7b9a4493c139d6afbf2db, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1221933864125444228, guid: 286279dae1e7b9a4493c139d6afbf2db, type: 3}
+      propertyPath: m_Material
+      value: 
+      objectReference: {fileID: 6200000, guid: 4287bd5a3a8eab74088a7a1a977d5efe, type: 2}
+    - target: {fileID: 1221933864125444229, guid: 286279dae1e7b9a4493c139d6afbf2db, type: 3}
+      propertyPath: jumpCancelGravity
+      value: 42
       objectReference: {fileID: 0}
     - target: {fileID: 1221933864125444231, guid: 286279dae1e7b9a4493c139d6afbf2db, type: 3}
       propertyPath: m_Name

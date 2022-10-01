@@ -59,7 +59,7 @@ public class CharacterController : MonoBehaviour
         }
         if (jumpBuffered && offGroundTimer < coyoteTime)
         {
-            offGroundTimer = coyoteTime;
+            //offGroundTimer = coyoteTime;
             jumpBuffered = false;
             jumpBufferTimer = 0f;
             Jump();
@@ -75,8 +75,27 @@ public class CharacterController : MonoBehaviour
     {
         if (col.collider.tag == groundTag)
         {
-            grounded = true;
-            offGroundTimer = 0f;
+            //Debug.Log(col.GetContact(0));
+            if (Vector2.Dot(col.GetContact(0).normal, Vector2.up) >= 0.5)
+            {
+                grounded = true;
+                offGroundTimer = 0f;
+            }
+        }
+    }
+
+    void OnCollisionStay2D(Collision2D col)
+    {
+        if (col.collider.tag == groundTag)
+        {
+            //Debug.Log(col.GetContact(0));
+            if (Vector2.Dot(col.GetContact(0).normal, Vector2.up) >= 0.5)
+            {
+                grounded = true;
+                offGroundTimer = 0f;
+            }else {
+                grounded = false;
+            }
         }
     }
 
@@ -85,7 +104,6 @@ public class CharacterController : MonoBehaviour
         if (col.collider.tag == groundTag)
         {
             grounded = false;
-            //offGroundTimer = 0f;
         }
     }
 
