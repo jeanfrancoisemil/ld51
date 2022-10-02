@@ -4,15 +4,16 @@ using UnityEngine;
 
 public class AlarmClock : MonoBehaviour
 {
-    // Start is called before the first frame update
     void Start()
     {
-        
     }
 
-    // Update is called once per frame
     void Update()
     {
-        
+    }
+
+    public void Ring()
+    {
+        Mob.TriggerSound(0, transform);
     }
 }

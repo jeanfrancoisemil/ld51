@@ -51,10 +51,6 @@ public class CharacterController : MonoBehaviour
         }
 
         rb.velocity = Vector2.right * horizontalInput * speed + Vector2.up * rb.velocity.y;
-        if (rb.velocity.sqrMagnitude > 0.01)
-        {
-            Mob.TriggerSound(1, transform);
-        }
 
         if (!Input.GetButton("Jump") && rb.velocity.y > 0)
         {

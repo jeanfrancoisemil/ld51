@@ -51,9 +51,12 @@ public class Timer : MonoBehaviour
         }
         else if (time <= 0)
         {
-            AlarmClock[] clocks = FindObjectsOfType<AlarmClock>();
-            foreach (AlarmClock clock in clocks)
+            AlarmClock clock = FindObjectOfType<AlarmClock>();
+            if (clock != null)
+            {
+                clock.Ring();
                 Destroy(clock.gameObject);
+            }
             Player.GetComponent<Character>().Die();
 
             Player.transform.position = lastCheckPoint;
