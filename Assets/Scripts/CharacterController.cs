@@ -19,11 +19,16 @@ public class CharacterController : MonoBehaviour
 
     private bool grounded;
 
+    //animation
+    public Animator anim;
+
     // Start is called before the first frame update
     void Awake()
     {
+        Transform gfx = transform.Find("GFX");
         rb = gameObject.GetComponent<Rigidbody2D>();
-        sr = transform.Find("GFX").GetComponent<SpriteRenderer>();
+        sr = gfx.GetComponent<SpriteRenderer>();
+        anim = gfx.GetComponent<Animator>();
     }
 
     // Update is called once per frame
@@ -69,6 +74,23 @@ public class CharacterController : MonoBehaviour
             jumpBuffered = false;
             jumpBufferTimer = 0f;
             Jump();
+        }
+    }
+
+    void LateUpdate()
+    {
+        if (!grounded)
+        {
+            //Debug.Log("Jumping");
+            anim.Play("Jumping");
+        }else if (Mathf.Abs(rb.velocity.x) > 0)
+        {
+            //Debug.Log("Walking");
+            anim.Play("Walking");
+        }else
+        {
+            //Debug.Log("Idle");
+            anim.Play("Idle");
         }
     }
 
