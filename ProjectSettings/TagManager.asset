@@ -47,3 +47,24 @@ TagManager:
   - name: Default
     uniqueID: 0
     locked: 0
+  - name: 1 fond
+    uniqueID: 190601253
+    locked: 0
+  - name: 2 horloge
+    uniqueID: 2056058771
+    locked: 0
+  - name: 3 rouages
+    uniqueID: 4248902131
+    locked: 0
+  - name: 4 briques
+    uniqueID: 832250803
+    locked: 0
+  - name: 5 Tuyaux
+    uniqueID: 910416811
+    locked: 0
+  - name: 6 Ground
+    uniqueID: 3669203105
+    locked: 0
+  - name: 7 Entity
+    uniqueID: 2407945721
+    locked: 0
