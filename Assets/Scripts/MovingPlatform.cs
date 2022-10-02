@@ -6,6 +6,7 @@ public class MovingPlatform : MonoBehaviour
 {
     public Vector2 to;
     public float speed = 0.005f;
+    public bool loop = false;
 
     public Button[] buttons;
     public bool needAllButtons = true;
@@ -22,17 +23,32 @@ public class MovingPlatform : MonoBehaviour
 
     void Update()
     {
-        if (!IsDoorOpen())
+        if (!loop)
         {
-            return;
-        }
+            if (IsDoorOpen())
+            {
+                target = fromTarget + to;
+            }
+            else
+            {
+                target = fromTarget;
+            }
 
-        transform.position = Vector2.Lerp(transform.position, target, speed);
-        if (Vector2.Distance(transform.position, target) < 0.1)
+            transform.position = Vector2.Lerp(transform.position, target, speed);
+        }
+        else
         {
-            Vector2 temp = target;
-            target = fromTarget;
-            fromTarget = temp;
+            if (!IsDoorOpen())
+                return;
+
+            transform.position = Vector2.Lerp(transform.position, target, speed);
+
+            if (Vector2.Distance(transform.position, target) < 0.1)
+            {
+                Vector2 temp = target;
+                target = fromTarget;
+                fromTarget = temp;
+            }
         }
     }
 
