@@ -12,11 +12,16 @@ public class Timer : MonoBehaviour
     private static Timer instance;
     public Vector2 lastCheckPoint;
     public GameObject Player;
+    public GameObject Clock;
     public float time = 10;
     private float seconds;
     public TextMeshProUGUI timeText;
     private Boolean timeStart;
     private Rigidbody2D rb;
+    public Transform cam;
+    public float offsetX;
+    public float offsetY;
+    
 
     private void Awake()
     {
@@ -34,7 +39,9 @@ public class Timer : MonoBehaviour
     private void Start()
     {
         Player.transform.position = lastCheckPoint;
+        Clock.transform.position = new Vector2(0,0);
         rb = Player.GetComponent<Rigidbody2D>();
+
     }
 
     void Update()
@@ -43,6 +50,9 @@ public class Timer : MonoBehaviour
         if (rb.velocity.x == 0 && time == 10)
         {
             timeStart = false;
+            offsetX = cam.transform.position.x - 5.7f;
+            offsetY = cam.transform.position.y - 3f;
+
         }
         else
         {
@@ -71,6 +81,7 @@ public class Timer : MonoBehaviour
             Player.transform.position = lastCheckPoint;
             time = 10;
             timeStart = false;
+            Clock.transform.position = new Vector2(0,0);
         }
 
         seconds = Mathf.FloorToInt(time % 60);
