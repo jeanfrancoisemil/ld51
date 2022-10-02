@@ -1,6 +1,8 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using TMPro;
+using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -10,10 +12,11 @@ public class Timer : MonoBehaviour
     private static Timer instance;
     public Vector2 lastCheckPoint;
     public GameObject Player;
-    public float time = 11;
+    public float time = 10;
     private float seconds;
     public TextMeshProUGUI timeText;
-    public Rigidbody2D rb;
+    private Boolean timeStart;
+    private Rigidbody2D rb;
 
     private void Awake()
     {
@@ -37,16 +40,22 @@ public class Timer : MonoBehaviour
     void Update()
     {
 
+        if (rb.velocity.x == 0 && time == 10)
+        {
+            timeStart = false;
+        }
+        else
+        {
+            timeStart = true;
+        }
+
+        DisplayTime(time);
+
         if (time > 0)
         {
-            if (rb.velocity.x == 0 && time > 10.99)
-            {
-                time = 11;
-            }
-            else
+            if (timeStart == true)
             {
                 time -= Time.deltaTime;
-                DisplayTime(time);
             }
         }
         else if (time <= 0)
@@ -60,7 +69,8 @@ public class Timer : MonoBehaviour
             Player.GetComponent<Character>().Die();
 
             Player.transform.position = lastCheckPoint;
-            time = 11;
+            time = 10;
+            timeStart = false;
         }
 
         seconds = Mathf.FloorToInt(time % 60);
@@ -68,8 +78,7 @@ public class Timer : MonoBehaviour
     }
 
     void DisplayTime(float timeToDisplay)
-    {
-        
+    {        
         float seconds = Mathf.FloorToInt(timeToDisplay % 60);
         timeText.text = string.Format("{0:00}", seconds);
     }

@@ -148,9 +148,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   lastCheckPoint: {x: 0, y: 0}
   Player: {fileID: 0}
-  time: 11
+  time: 10
   timeText: {fileID: 1662944981459982252}
-  rb: {fileID: 0}
 --- !u!1 &1662944981459982254
 GameObject:
   m_ObjectHideFlags: 0

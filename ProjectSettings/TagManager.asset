@@ -9,6 +9,7 @@ TagManager:
   - Props
   - Timer
   - PlayerKiller
+  - CheckPoint
   layers:
   - Default
   - TransparentFX
