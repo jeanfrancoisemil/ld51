@@ -5,6 +5,7 @@ using UnityEngine;
 public class Button : MonoBehaviour
 {
     private AudioSource clickSound;
+    public bool isLever;
     [HideInInspector]
     public bool isPressed = false;
 
@@ -20,12 +21,29 @@ public class Button : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        isPressed = true;
+        if (isLever)
+        {
+            if (isPressed)
+            {
+                isPressed = false;
+            }
+            else
+            {
+                isPressed = true;
+            }
+        }
+        else
+        {
+            isPressed = true;
+        }
         clickSound.Play();
     }
 
     private void OnTriggerExit2D(Collider2D collision)
     {
-        isPressed = false;
+        if (!isLever)
+        {
+            isPressed = false;
+        }
     }
 }
