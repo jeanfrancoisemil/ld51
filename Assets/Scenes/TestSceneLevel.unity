@@ -257,6 +257,9 @@ MonoBehaviour:
   - {fileID: 475532424}
   stayOpen: 1
   needAllButtons: 1
+  defaultOpen: 0
+  resetButtonsAfterTime: 0
+  resetTime: 0
   isOpen: 0
 --- !u!61 &227348404
 BoxCollider2D:
@@ -368,11 +371,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 24792362672904979, guid: 03e45b60d1de1914697c8719f4f1280c, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -12.46
+      value: -3.08
       objectReference: {fileID: 0}
     - target: {fileID: 24792362672904979, guid: 03e45b60d1de1914697c8719f4f1280c, type: 3}
       propertyPath: m_LocalPosition.y
-      value: -3.35
+      value: -3.69
       objectReference: {fileID: 0}
     - target: {fileID: 24792362672904979, guid: 03e45b60d1de1914697c8719f4f1280c, type: 3}
       propertyPath: m_LocalPosition.z
@@ -504,6 +507,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3746870823d39e448a691f0d8ebec68b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  isLever: 0
   isPressed: 0
 --- !u!61 &475532425
 BoxCollider2D:
@@ -2784,7 +2788,7 @@ PrefabInstance:
   m_SourcePrefab: {fileID: 100100000, guid: 286279dae1e7b9a4493c139d6afbf2db, type: 3}
 --- !u!4 &1633597403 stripped
 Transform:
-  m_CorrespondingSourceObject: {fileID: 1221933864125444227, guid: 286279dae1e7b9a4493c139d6afbf2db, type: 3}
+  m_CorrespondingSourceObject: {fileID: 1221933864832749460, guid: 286279dae1e7b9a4493c139d6afbf2db, type: 3}
   m_PrefabInstance: {fileID: 1633597402}
   m_PrefabAsset: {fileID: 0}
 --- !u!1001 &1670670040
