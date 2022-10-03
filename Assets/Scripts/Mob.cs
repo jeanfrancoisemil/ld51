@@ -12,6 +12,7 @@ public class Mob : MonoBehaviour
     private BoxCollider2D m_Collider;
 
     private Vector3 targetPosition;
+    
 
     void Start()
     {
