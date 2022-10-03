@@ -7,6 +7,8 @@ public class Character : MonoBehaviour
 {
     public GameObject clock;
 
+    [HideInInspector]
+    public bool foundClock;
     private Timer timer;
 
     private void OnTriggerEnter2D(Collider2D collision)
@@ -18,13 +20,19 @@ public class Character : MonoBehaviour
     }
     private void Start()
     {
+        foundClock = false;
         timer = GameObject.FindGameObjectWithTag("Timer").GetComponent<Timer>();
     }
 
     public void Die()
     {
         timer.time = 0;
-        GameObject obj = Instantiate(clock);
-        obj.transform.position = transform.position;
+
+        if (foundClock)
+        {
+            GameObject obj = Instantiate(clock);
+            obj.transform.position = transform.position;
+        }
+
     }
 }
