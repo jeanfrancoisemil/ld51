@@ -16,36 +16,42 @@ public class Door : MonoBehaviour
     private float timer = 0;
     private bool timerStarted = false;
 
+    private BoxCollider2D box;
+
     void Start()
     {
+        box = GetComponent<BoxCollider2D>();
     }
 
     void Update()
     {
-        if (buttons == null || (stayOpen && isOpen))
+        if (buttons == null)
         {
             return;
         }
 
-        var collider = GetComponent<BoxCollider2D>();
-
         if (timerStarted && timer > 0)
         {
             timer -= Time.deltaTime;
-            Debug.Log(timer);
         }
         else if (timerStarted)
         {
+            // Fin du timer
             foreach (var button in buttons)
                 button.isPressed = false;
             timerStarted = false;
+
+            CloseDoor();
+        }
+
+        if (isOpen && stayOpen)
+        {
+            return;
         }
 
         if (IsDoorOpen())
         {
-            collider.enabled = false;
-            GetComponent<SpriteRenderer>().enabled = false;
-            isOpen = true;
+            OpenDoor();
 
             // Demarrer le timer
             if (resetButtonsAfterTime && !timerStarted)
@@ -56,10 +62,22 @@ public class Door : MonoBehaviour
         }
         else
         {
-            collider.enabled = true;
-            GetComponent<SpriteRenderer>().enabled = true;
-            isOpen = false;
+            CloseDoor();
         }
+    }
+
+    private void OpenDoor()
+    {
+        box.enabled = false;
+        GetComponent<SpriteRenderer>().enabled = false;
+        isOpen = true;
+    }
+
+    private void CloseDoor()
+    {
+        box.enabled = true;
+        GetComponent<SpriteRenderer>().enabled = true;
+        isOpen = false;
     }
 
     private bool IsDoorOpen()
