@@ -68,7 +68,7 @@ public class Timer : MonoBehaviour
                 time -= Time.deltaTime;
             }
         }
-        else if (time <= 0)
+        else if (time <= 2.5)
         {
             if (Player.GetComponent<Character>().foundClock)
             {
@@ -78,7 +78,9 @@ public class Timer : MonoBehaviour
                     clock.Ring();
                 }
             }
-
+        }
+        else if (time <= 0)
+        {
             Player.GetComponent<Character>().Die();
 
             Player.transform.position = lastCheckPoint;
