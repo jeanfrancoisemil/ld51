@@ -50,8 +50,8 @@ public class Timer : MonoBehaviour
         if (rb.velocity.x == 0 && time == 10)
         {
             timeStart = false;
-            offsetX = cam.transform.position.x - 5.7f;
-            offsetY = cam.transform.position.y - 3f;
+            offsetX = cam.transform.position.x;
+            offsetY = cam.transform.position.y;
 
         }
         else
@@ -70,12 +70,16 @@ public class Timer : MonoBehaviour
         }
         else if (time <= 0)
         {
-            AlarmClock clock = FindObjectOfType<AlarmClock>();
-            if (clock != null)
+            if (Player.GetComponent<Character>().foundClock)
             {
-                clock.Ring();
-                Destroy(clock.gameObject);
+                AlarmClock clock = FindObjectOfType<AlarmClock>();
+                if (clock != null)
+                {
+                    clock.Ring();
+                    Destroy(clock.gameObject);
+                }
             }
+
             Player.GetComponent<Character>().Die();
 
             Player.transform.position = lastCheckPoint;
