@@ -67,19 +67,18 @@ public class Timer : MonoBehaviour
             {
                 time -= Time.deltaTime;
             }
-        }
-        else if (time <= 0)
-        {
-            if (Player.GetComponent<Character>().foundClock)
+
+            if (time <= 2.5 && Player.GetComponent<Character>().foundClock)
             {
                 AlarmClock clock = FindObjectOfType<AlarmClock>();
                 if (clock != null)
                 {
                     clock.Ring();
-                    Destroy(clock.gameObject);
                 }
             }
-
+        }
+        else if (time <= 0)
+        {
             Player.GetComponent<Character>().Die();
 
             Player.transform.position = lastCheckPoint;
