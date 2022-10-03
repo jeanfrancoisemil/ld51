@@ -76,7 +76,6 @@ public class Timer : MonoBehaviour
                 if (clock != null)
                 {
                     clock.Ring();
-                    Destroy(clock.gameObject);
                 }
             }
 
