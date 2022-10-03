@@ -12,6 +12,7 @@ public class Mob : MonoBehaviour
     private BoxCollider2D m_Collider;
 
     private Vector3 targetPosition;
+    
 
     void Start()
     {
@@ -43,7 +44,7 @@ public class Mob : MonoBehaviour
         m_Rigidbody.velocity = direction * acceleration;
     }
 
-    public void OnSound(int priority, Transform source)
+    public void OnSound(Transform source)
     {
         targetPosition = source.position;
     }
@@ -53,10 +54,13 @@ public class Mob : MonoBehaviour
         targetPosition = Vector3.zero;
     }
 
-    public static void TriggerSound(int priority, Transform source)
+    public static void TriggerSound(float range, Transform source)
     {
         Mob[] mobs = FindObjectsOfType<Mob>();
         foreach (Mob mob in mobs)
-            mob.OnSound(priority, source);
+        {
+            if (Vector3.Distance(mob.transform.position, source.position) <= range)
+                mob.OnSound(source);
+        }
     }
 }

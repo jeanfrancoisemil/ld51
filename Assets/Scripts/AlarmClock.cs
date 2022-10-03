@@ -4,6 +4,8 @@ using UnityEngine;
 
 public class AlarmClock : MonoBehaviour
 {
+    public float range = 20.0f;
+
     void Start()
     {
     }
@@ -14,6 +16,6 @@ public class AlarmClock : MonoBehaviour
 
     public void Ring()
     {
-        Mob.TriggerSound(0, transform);
+        Mob.TriggerSound(range, transform);
     }
 }
