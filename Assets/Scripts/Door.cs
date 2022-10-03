@@ -41,7 +41,10 @@ public class Door : MonoBehaviour
                 button.isPressed = false;
             timerStarted = false;
 
-            CloseDoor();
+            if (defaultOpen)
+                OpenDoor();
+            else
+                CloseDoor();
         }
 
         if (isOpen && stayOpen)
