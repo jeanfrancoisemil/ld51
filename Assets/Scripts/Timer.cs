@@ -67,10 +67,8 @@ public class Timer : MonoBehaviour
             {
                 time -= Time.deltaTime;
             }
-        }
-        else if (time <= 2.5)
-        {
-            if (Player.GetComponent<Character>().foundClock)
+
+            if (time <= 2.5 && Player.GetComponent<Character>().foundClock)
             {
                 AlarmClock clock = FindObjectOfType<AlarmClock>();
                 if (clock != null)
